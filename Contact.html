@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kontak | Bayu Prasetyo</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            MYPORTO<span>.</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Tentang Saya</a></li>
+            <li><a href="skills.html">Keahlian</a></li>
+            <li><a href="projects.html">Proyek</a></li>
+            <li><a href="contact.html" class="active">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <!-- HALAMAN KONTAK -->
+    <main class="container">
+
+        <section class="page-section">
+
+            <p class="hero-label">LET'S CONNECT</p>
+
+            <h1 class="section-title">
+                HUBUNGI <span>SAYA.</span>
+            </h1>
+
+            <p class="section-description">
+                Punya pertanyaan, ide, atau ingin bekerja sama?
+                Silakan kirim pesan melalui formulir di bawah ini.
+            </p>
+
+            <div class="card-grid">
+
+                <div class="card">
+                    <div class="card-number">01 / CONNECT</div>
+
+                    <h3>Mari Terhubung</h3>
+
+                    <p>
+                        Saya terbuka untuk bertukar ide,
+                        belajar bersama, dan menjelajahi
+                        kesempatan baru.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-number">02 / COLLABORATE</div>
+
+                    <h3>Kolaborasi</h3>
+
+                    <p>
+                        Punya ide proyek menarik?
+                        Mari berdiskusi dan mengembangkan
+                        sesuatu yang bermanfaat.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-number">03 / MESSAGE</div>
+
+                    <h3>Kirim Pesan</h3>
+
+                    <p>
+                        Isi formulir di bawah untuk menyiapkan
+                        pesan yang bisa dikirim melalui email.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- FORM KONTAK -->
+            <div class="contact-box">
+
+                <form id="contactForm">
+
+                    <div class="form-group">
+                        <label for="nama">Nama</label>
+
+                        <input
+                            type="text"
+                            id="nama"
+                            placeholder="Masukkan nama kamu"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="nama@email.com"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pesan">Pesan</label>
+
+                        <textarea
+                            id="pesan"
+                            rows="5"
+                            placeholder="Tulis pesan kamu di sini..."
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        Kirim Pesan →
+                    </button>
+
+                </form>
+
+                <p
+                    id="formStatus"
+                    class="section-description"
+                    style="margin-top:18px;"
+                    aria-live="polite"
+                ></p>
+
+            </div>
+
+            <div style="margin-top:35px;">
+                <a href="projects.html" class="btn btn-outline">
+                    ← Kembali ke Proyek
+                </a>
+
+                <a href="index.html" class="btn btn-primary">
+                    Kembali ke Home
+                </a>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 <span>BAYU PRASETYO</span> — MYPORTO.
+    </footer>
+
+    <!-- FORM SCRIPT -->
+    <script>
+        const form = document.getElementById("contactForm");
+        const status = document.getElementById("formStatus");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const nama = document.getElementById("nama").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const pesan = document.getElementById("pesan").value.trim();
+
+            if (!nama || !email || !pesan) {
+                status.textContent = "Silakan lengkapi semua kolom.";
+                return;
+            }
+
+            const tujuanEmail = "";
+            const subjek = encodeURIComponent(
+                "Pesan dari website MYPORTO"
+            );
+
+            const isiPesan = encodeURIComponent(
+                "Nama: " + nama +
+                "\nEmail: " + email +
+                "\n\nPesan:\n" + pesan
+            );
+
+            if (!tujuanEmail) {
+                status.textContent =
+                    "Formulir siap! Alamat email penerima belum diatur.";
+                return;
+            }
+
+            window.location.href =
+                "mailto:" + tujuanEmail +
+                "?subject=" + subjek +
+                "&body=" + isiPesan;
+        });
+    </script>
+
+</body>
+</html>
